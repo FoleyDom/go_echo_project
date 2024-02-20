@@ -7,7 +7,6 @@ import (
 )
 
 type Todo struct {
-	gorm.Model
 	ID      string `gorm:"primaryKey"`
 	Text    string
 	Checked bool

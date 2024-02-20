@@ -9,6 +9,8 @@ import (
 
 type IndexHandler struct{}
 
+var db = models.ConnectDB()
+
 func (h IndexHandler) HandleIndex(c echo.Context) error {
 	return render(c, view.Index(), layout.Layout())
 }
@@ -21,10 +23,10 @@ func (h IndexHandler) HandleCreateTodos(c echo.Context) error {
 	todo := models.Todo{
 		ID:      id,
 		Text:    text,
-		Checked: checked == "true",
+		Checked: checked == "on",
 	}
 
-	models.CreateTodo(models.ConnectDB(), &todo)
+	models.CreateTodo(db, &todo)
 
 	return render(c, view.Index(), layout.Layout())
 }
