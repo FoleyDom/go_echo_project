@@ -7,7 +7,7 @@ import (
 )
 
 type Todo struct {
-	ID      string `gorm:"primaryKey"`
+	// ID      string `gorm:"primaryKey"`
 	Text    string
 	Checked bool
 }
@@ -19,6 +19,10 @@ func ConnectDB() *gorm.DB {
 
 func CreateTodo(db *gorm.DB, todo *Todo) *Todo {
 	db.Create(&todo)
+	err := db.Error
+	if err != nil {
+		panic(err)
+	}
 	return todo
 }
 

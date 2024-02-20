@@ -16,17 +16,26 @@ func (h IndexHandler) HandleIndex(c echo.Context) error {
 }
 
 func (h IndexHandler) HandleCreateTodos(c echo.Context) error {
-	id := c.FormValue("id")
-	text := c.FormValue("text")
+	// id := c.FormValue("id")
+	text := c.FormValue("name")
+	if text == "" {
+		return echo.NewHTTPError(400, "name is required")
+	}
 	checked := c.FormValue("checked")
+	if checked == "" {
+		checked = "false"
+	}
 
 	todo := models.Todo{
-		ID:      id,
+		// ID:      id,
 		Text:    text,
-		Checked: checked == "on",
+		Checked: checked == "true",
 	}
 
 	models.CreateTodo(db, &todo)
+	if err := db.Error; err != nil {
+		return err
+	}
 
-	return render(c, view.Index(), layout.Layout())
+	return c.Redirect(302, "/")
 }

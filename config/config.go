@@ -16,14 +16,23 @@ func InitDB() *gorm.DB {
 	}
 
 	sqlStmt := `
-	create table if not exists todo (id string not null primary key, text text, checked bool);
+	create table if not exists todos (id integer not null primary key, text text, checked bool);
 	`
-	_ = db.Exec(sqlStmt)
+	db.Exec(sqlStmt)
 	if err != nil {
 		log.Printf("%q: %s\n", err, sqlStmt)
 		return nil
 	}
 
-	// create table if not exists
 	return db
 }
+
+// ConnectDB ...
+
+// func ConnectDB() *gorm.DB {
+// 	db, err := gorm.Open(sqlite.Open("./db/todo.db"), &gorm.Config{})
+// 	if err != nil {
+// 		panic("failed to connect database")
+// 	}
+// 	return db
+// }
