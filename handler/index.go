@@ -15,6 +15,17 @@ func (h IndexHandler) HandleIndex(c echo.Context) error {
 	return render(c, view.Index(), layout.Layout())
 }
 
+func (h IndexHandler) HandleGetTodos(c echo.Context) error {
+	todos := models.GetTodos(db)
+	return c.JSON(200, todos)
+}
+
+func (h IndexHandler) HandleGetTodosByChecked(c echo.Context) error {
+	checked := c.QueryParam("checked")
+	todos := models.GetTodosByChecked(db, checked == "true")
+	return c.JSON(200, todos)
+}
+
 func (h IndexHandler) HandleCreateTodos(c echo.Context) error {
 	// id := c.FormValue("id")
 	text := c.FormValue("name")

@@ -9,14 +9,15 @@ func main() {
 	app := echo.New()
 
 	UserHandler := handler.UserHandler{}
-	Hello_WorldHandler := handler.Hello_WorldHandler{}
+	// Hello_WorldHandler := handler.Hello_WorldHandler{}
 	IndexHandler := handler.IndexHandler{}
 
-	app.GET("/", Hello_WorldHandler.HandleHello_World)
+	// app.GET("/", Hello_WorldHandler.HandleHello_World)
 	app.GET("/users", UserHandler.HandleUserShow)
 
-	app.GET("/index", IndexHandler.HandleIndex)
-	app.POST("/index/create", IndexHandler.HandleCreateTodos)
+	app.GET("/", IndexHandler.HandleGetTodos)
+	app.GET("/checked/:id", IndexHandler.HandleGetTodosByChecked)
+	app.POST("/create", IndexHandler.HandleCreateTodos)
 	app.Logger.Fatal(app.Start(":8080"))
 
 	app.Static("/css", "css")
