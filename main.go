@@ -16,7 +16,7 @@ func main() {
 	app.GET("/users", UserHandler.HandleUserShow)
 
 	app.GET("/", IndexHandler.HandleGetTodos)
-	app.GET("/checked/:id", IndexHandler.HandleGetTodosByChecked)
+	app.GET("/checked", IndexHandler.HandleGetTodosByChecked)
 	app.POST("/create", IndexHandler.HandleCreateTodos)
 	app.Logger.Fatal(app.Start(":8080"))
 

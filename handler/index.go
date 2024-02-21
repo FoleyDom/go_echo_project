@@ -21,8 +21,8 @@ func (h IndexHandler) HandleGetTodos(c echo.Context) error {
 }
 
 func (h IndexHandler) HandleGetTodosByChecked(c echo.Context) error {
-	checked := c.QueryParam("checked")
-	todos := models.GetTodosByChecked(db, checked == "true")
+	checked := true
+	todos := models.GetTodosByChecked(db, checked)
 	return c.JSON(200, todos)
 }
 
