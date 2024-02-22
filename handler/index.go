@@ -52,12 +52,12 @@ func (h IndexHandler) CreateTodos(c echo.Context) error {
 }
 
 func (h IndexHandler) UpdateTodos(c echo.Context) error {
-	id := c.FormValue("id")
+	// id := c.FormValue("id")
 	text := c.FormValue("name")
 	checked := c.FormValue("checked")
 
 	todo := models.Todo{
-		ID:      id,
+		// ID:      id,
 		Text:    text,
 		Checked: checked == "true",
 	}
@@ -70,12 +70,12 @@ func (h IndexHandler) UpdateTodos(c echo.Context) error {
 	return c.Redirect(302, "/")
 }
 
-func (h IndexHandler) DeleteTodos(c echo.Context) error {
-	id := c.FormValue("id")
-	models.DeleteTodos(db, &models.Todo{ID: id})
-	if err := db.Error; err != nil {
-		return err
-	}
+// func (h IndexHandler) DeleteTodos(c echo.Context) error {
+// 	// id := c.FormValue("id")
+// 	// models.DeleteTodos(db, &models.Todo{ID: id})
+// 	// if err := db.Error; err != nil {
+// 	// 	return err
+// 	// }
 
-	return c.Redirect(302, "/")
-}
+// 	// return c.Redirect(302, "/")
+// }

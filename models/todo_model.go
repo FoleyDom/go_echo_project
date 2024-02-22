@@ -7,7 +7,7 @@ import (
 )
 
 type Todo struct {
-	ID      string `gorm:"primaryKey"`
+	ID      int `gorm:"primaryKey"`
 	Text    string
 	Checked bool
 }

@@ -15,12 +15,15 @@ func main() {
 	// app.GET("/", Hello_WorldHandler.HandleHello_World)
 	app.GET("/users", UserHandler.HandleUserShow)
 
+	// test route
+	app.GET("/test", IndexHandler.Index)
+
 	// Routes
 	app.GET("/", IndexHandler.GetTodos)
 	app.GET("/checked", IndexHandler.GetTodosByChecked)
 	app.POST("/create", IndexHandler.CreateTodos)
 	app.POST("/update", IndexHandler.UpdateTodos)
-	app.POST("/delete", IndexHandler.DeleteTodos)
+	// app.POST("/delete", IndexHandler.DeleteTodos)
 
 	app.Logger.Fatal(app.Start(":8080"))
 
