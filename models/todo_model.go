@@ -37,3 +37,21 @@ func GetTodosByChecked(db *gorm.DB, checked bool) []Todo {
 	db.Where("checked = ?", checked).Find(&todos)
 	return todos
 }
+
+func UpdateTodos(db *gorm.DB, todo *Todo) *Todo {
+	db.Save(&todo)
+	err := db.Error
+	if err != nil {
+		panic(err)
+	}
+	return todo
+}
+
+func DeleteTodos(db *gorm.DB, todo *Todo) *Todo {
+	db.Delete(&todo)
+	err := db.Error
+	if err != nil {
+		panic(err)
+	}
+	return todo
+}

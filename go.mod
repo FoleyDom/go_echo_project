@@ -5,6 +5,8 @@ go 1.21.7
 require (
 	github.com/a-h/templ v0.2.543
 	github.com/labstack/echo/v4 v4.11.4
+	gorm.io/driver/sqlite v1.5.5
+	gorm.io/gorm v1.25.7
 )
 
 require (
@@ -20,6 +22,4 @@ require (
 	golang.org/x/net v0.19.0 // indirect
 	golang.org/x/sys v0.15.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
-	gorm.io/driver/sqlite v1.5.5 // indirect
-	gorm.io/gorm v1.25.7 // indirect
 )

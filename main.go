@@ -15,9 +15,13 @@ func main() {
 	// app.GET("/", Hello_WorldHandler.HandleHello_World)
 	app.GET("/users", UserHandler.HandleUserShow)
 
-	app.GET("/", IndexHandler.HandleGetTodos)
-	app.GET("/checked", IndexHandler.HandleGetTodosByChecked)
-	app.POST("/create", IndexHandler.HandleCreateTodos)
+	// Routes
+	app.GET("/", IndexHandler.GetTodos)
+	app.GET("/checked", IndexHandler.GetTodosByChecked)
+	app.POST("/create", IndexHandler.CreateTodos)
+	app.POST("/update", IndexHandler.UpdateTodos)
+	app.POST("/delete", IndexHandler.DeleteTodos)
+
 	app.Logger.Fatal(app.Start(":8080"))
 
 	app.Static("/css", "css")
