@@ -31,7 +31,7 @@ func Index() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"p-4\"><form><input type=\"text\" name=\"name\" class=\"border rounded-md p-2 m-2\" placeholder=\"Add a new todo\"> <input id=\"default-radio-1\" type=\"radio\" name=\"checked\" value=\"true\" name=\"default-radio\" class=\"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600\"> <button type=\"submit\" class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\">Add</button> <button hx-post=\"/create\" hx-trigger=\"click\" class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\">Click Me!</button></form></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"p-4\"><form><input type=\"text\" name=\"name\" class=\"border rounded-md p-2 m-2\" placeholder=\"Add a new todo\"> <input id=\"default-radio-1\" type=\"radio\" name=\"checked\" value=\"true\" name=\"default-radio\" class=\"w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600\"> <button hx-post=\"/create\" hx-trigger=\"click\" hx-target=\"#open_div\" class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\">Click Me! <img class=\"htmx-indicator\" src=\"/spinner.gif\"></button><div id=\"open_div\"></div></form></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
