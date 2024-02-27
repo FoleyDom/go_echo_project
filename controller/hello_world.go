@@ -1,4 +1,4 @@
-package handler
+package controller
 
 import (
 	"github.com/foleydom/go_echo_project/view/layout"

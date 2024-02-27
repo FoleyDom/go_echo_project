@@ -1,16 +1,16 @@
 package main
 
 import (
-	"github.com/foleydom/go_echo_project/handler"
+	"github.com/foleydom/go_echo_project/controller"
 	"github.com/labstack/echo/v4"
 )
 
 func main() {
 	app := echo.New()
 
-	UserHandler := handler.UserHandler{}
+	UserHandler := controller.UserHandler{}
 	// Hello_WorldHandler := handler.Hello_WorldHandler{}
-	IndexHandler := handler.IndexHandler{}
+	IndexHandler := controller.IndexHandler{}
 
 	// app.GET("/", Hello_WorldHandler.HandleHello_World)
 	app.GET("/users", UserHandler.HandleUserShow)
