@@ -1,0 +1,17 @@
+package components
+
+import (
+   "github.com/foleydom/go_echo_project/models"
+)
+
+templ AddButton() {
+   <button hx-post="/create" hx-target="this" hx-swap="outerHTML" class="w-full h-12 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg">Add Todo</button>
+}
+
+templ EditButton(todo *models.Todo) {
+   <button hx-put="/update/{{todo.ID}}" hx-target="this" hx-swap="outerHTML" class="w-full h-12 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg">Update Todo</button>
+}
+
+templ DeleteButton(todo *models.Todo) {
+   <button hx-delete="/delete/{{todo.ID}}" hx-target="this" hx-swap="outerHTML" class="w-full h-12 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg">Delete Todo</button>
+}

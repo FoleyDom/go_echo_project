@@ -22,7 +22,7 @@ func main() {
 	app.GET("/", IndexHandler.GetTodos)
 	app.GET("/checked", IndexHandler.GetTodosByChecked)
 	app.POST("/create", IndexHandler.CreateTodos)
-	app.POST("/update/:id", IndexHandler.UpdateTodos)
+	app.PUT("/update/:id", IndexHandler.UpdateTodos)
 	app.POST("/delete/:id", IndexHandler.DeleteTodos)
 
 	app.Logger.Fatal(app.Start(":8080"))
