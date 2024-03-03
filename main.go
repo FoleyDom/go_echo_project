@@ -1,16 +1,18 @@
 package main
 
 import (
-	"github.com/foleydom/go_echo_project/controller"
+	"github.com/foleydom/go_echo_project/handlers"
 	"github.com/labstack/echo/v4"
 )
 
 func main() {
 	app := echo.New()
 
-	UserHandler := controller.UserHandler{}
+	app.Static("/css", "css")
+
+	UserHandler := handlers.UserHandler{}
 	// Hello_WorldHandler := handler.Hello_WorldHandler{}
-	IndexHandler := controller.IndexHandler{}
+	IndexHandler := handlers.IndexHandler{}
 
 	// app.GET("/", Hello_WorldHandler.HandleHello_World)
 	app.GET("/users", UserHandler.HandleUserShow)
@@ -27,5 +29,4 @@ func main() {
 
 	app.Logger.Fatal(app.Start(":8080"))
 
-	app.Static("/css", "css")
 }
