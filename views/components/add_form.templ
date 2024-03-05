@@ -1,0 +1,17 @@
+package components
+
+
+templ AddButton() {
+   <button hx-post="/create" hx-target="this" hx-swap="outerHTML" class="w-full h-12 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg">Add Todo</button>
+}
+
+templ AddInput(){
+   <input type="text" name="name" placeholder="What needs to get done?" class="w-full h-12 bg-black text-white font-bold rounded-lg" />
+}
+
+templ AddForm() {
+   <form hx-post="/create" hx-target="#todos" hx-swap="outerHTML">
+      @AddInput()
+      @AddButton()
+   </form>
+}

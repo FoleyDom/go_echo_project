@@ -1,0 +1,47 @@
+package components
+
+import "github.com/foleydom/go_echo_project/models"
+import "strconv"
+
+templ TodoCard(todo models.Todo) {
+	<div class="p-6 py-3 flex flex-row items-center w-full gap-4 rounded-2xl border border-black border-solid" id={ "todo-" + strconv.Itoa(todo.ID) }>
+		if todo.Checked {
+			<input
+ 				type="checkbox"
+ 				checked
+ 				hx-put={ "/todos/" + strconv.Itoa(todo.ID) }
+ 				hx-trigger="click"
+ 				hx-swap="outerHTML"
+ 				hx-target={ "#todo-" + strconv.Itoa(todo.ID) }
+ 				name="checked"
+			/>
+		} else {
+			<input
+ 				type="checkbox"
+ 				hx-put={ "/todos/" + strconv.Itoa(todo.ID) }
+ 				hx-trigger="click"
+ 				hx-swap="outerHTML"
+ 				hx-target={ "#todo-" + strconv.Itoa(todo.ID) }
+ 				name="checked"
+			/>
+		}
+		<span
+ 			class="material-symbols-outlined cursor-pointer hover:opacity-50"
+ 			hx-get={ "/components?type=edit-todo-input&id=" + strconv.Itoa(todo.ID) }
+ 			hx-trigger="click"
+ 			hx-swap="outerHTML"
+ 			hx-target={ "#todo-" + strconv.Itoa(todo.ID) }
+		>
+			edit
+		</span>
+		<span
+ 			class="material-symbols-outlined cursor-pointer hover:opacity-50"
+ 			hx-delete={ "/todos/" + strconv.Itoa(todo.ID) }
+ 			hx-trigger="click"
+ 			hx-swap="outerHTML"
+ 			hx-target="#todos"
+		>
+			delete
+		</span>
+	</div>
+}

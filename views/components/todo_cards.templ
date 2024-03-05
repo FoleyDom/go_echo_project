@@ -1,0 +1,14 @@
+package components
+
+import "github.com/foleydom/go_echo_project/models"
+
+templ TodoCards(todos []models.Todo) {
+	<div class="bg-white p-6 rounded-2xl shadow-lg w-full flex flex-col gap-4" id="todos">
+		for _, todo := range todos {
+			@TodoCard(models.Todo{
+            ID: todo.ID, 
+            Text: todo.Text, 
+            Checked: todo.Checked})
+		}
+	</div>
+}

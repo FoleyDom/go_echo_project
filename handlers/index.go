@@ -5,7 +5,6 @@ import (
 
 	"github.com/foleydom/go_echo_project/models"
 	view "github.com/foleydom/go_echo_project/views"
-	"github.com/foleydom/go_echo_project/views/user"
 	"github.com/labstack/echo/v4"
 )
 
@@ -14,11 +13,12 @@ type IndexHandler struct{}
 var db = models.ConnectDB()
 
 func (h IndexHandler) Index(c echo.Context) error {
-	return render(c, view.Index())
+	return render(c, view.Index([]models.Todo{}))
 }
 
 func (h IndexHandler) GetTodos(c echo.Context) error {
-	return render(c, view.Index())
+	todos := models.GetTodos(db)
+	return render(c, view.Index(todos))
 }
 
 func (h IndexHandler) GetTodosByChecked(c echo.Context) error {
@@ -49,7 +49,7 @@ func (h IndexHandler) CreateTodos(c echo.Context) error {
 		return err
 	}
 
-	return render(c, user.User())
+	return render(c, view.Index([]models.Todo{}))
 }
 
 func (h IndexHandler) UpdateTodos(c echo.Context) error {
